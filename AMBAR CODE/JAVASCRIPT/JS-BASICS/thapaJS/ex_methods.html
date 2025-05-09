@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let months =["jan","feb","mar","april","may","june","july","aug","sep","oct"," nov"];
+        const indexToupdate=months.indexOf("feb");
+        months.splice(indexToupdate,1,"Feb");
+        console.log(months);
+
+        const indexTodelete=months.indexOf("june");
+        months.splice(indexTodelete,1);
+        console.log(months);
+    </script>
+</body>
+</html>

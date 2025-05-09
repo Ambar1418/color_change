@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Link to Localhost</title>
+    <style>
+      body {
+        margin-top: 300px;
+        margin-left: 700px;
+        align-items: center;
+        align-content: center;
+        display: flex;
+        animation: gradientBoom 2s ease-out forwards;
+      }
+
+      @keyframes gradientBoom {
+        0% {
+          transform: scale(0.5);
+          opacity: 0;
+          background: rgba(152, 150, 241, 0.952);
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+          background: linear-gradient(45deg, #f5b3c0);
+        }
+      }
+      .animated-text {
+        display: flex;
+        font-size: 24px;
+        color: rgb(15, 2, 2);
+        opacity: 0;
+        animation: fadeIn 2s ease-out forwards 2s;
+        margin-top: 0px;
+        margin-left: -150px;
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .link-button {
+        background-color: #011702;
+        border: none;
+        height: 100px;
+        width: 200px;
+        color: rgb(248, 206, 206);
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: background-color 0.3s, transform 0.2s;
+      }
+
+      .link-button:hover {
+        background-color: #45a049;
+        transform: scale(1.05);
+      }
+
+      .link-button:focus {
+        outline: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div class="animated-text"><h1>This is Ambar Gupta's Chatbot !</h1></div>
+      <a href="http://localhost:3000" class="link-button" target="_blank">
+        <h1>MY CHATBOT</h1>
+      </a>
+    </div>
+  </body>
+</html>

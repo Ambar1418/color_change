@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="h1">Heading</h1>
+    <ul class="u1">
+      <li>1.DSA 2.JS</li>
+      <li>3.PY 4.c++</li>
+    </ul>
+    <script>
+      let x = document.getElementById("h1");
+      console.log(x);
+      console.log(x.innerHTML);
+      console.log(x.innerText);
+      const t = document.getElementsByClassName("u1");
+      console.log(...t);
+      const q = document.querySelector("#h1");
+      console.log(q);
+      const w = document.querySelector("#h1");
+      console.log((w.innerHTML = "AMBAR"));
+      const i = document.querySelectorAll("li");
+      console.log(i);
+    </script>
+  </body>
+</html>

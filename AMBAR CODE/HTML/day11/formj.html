@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div align="center"> 
+         <br><br><br><br>
+         <h1>Registration Form</h1>
+         <h3 id="error"></h3>
+         <form method="post" action="" onsubmit="return verify()">
+            <table  border="2px" cellpadding="5">
+                 <tr>
+                    <td align="center" colspan="2">
+                        All Fields Are Mandatory
+                    </td>
+                 </tr>
+                 <tr>
+                    <td>Name</td>
+                    <td><input type="text" name="name" id="name" size="25" placeholder="Enter Name"></td>
+                 </tr>
+                 <tr>
+                    <td>Gender</td>
+                    <td>
+                        <input type="radio" name="gender" value="male">Male
+                        <input type="radio" name="gender" value="female">Female
+                    </td>
+                 </tr>
+                 <tr>
+                    <td>UserName</td>
+                    <td><input type="text" name="UserName" id="UserName" size="25"></td>
+                 </tr>
+                 <tr>
+                    <td>Password</td>
+                    <td><input type="password" name="password" id="pwd" size="25"></td>
+                 </tr>
+                 <tr>
+                    <td align="center" colspan="2">
+                        <input type="submit" value="Registration">
+                        <input type="reset" value="Clear">
+                    </td>
+                 </tr>
+            </table>
+         </form>
+    </div>
+    <script>
+        function verify() {
+            var name = document.getElementById('name');
+            var gender = document.getElementsByName('gender');
+            var UserName = document.getElementById('UserName');
+            var Password = document.getElementById('pwd');
+            var msg = new Array();
+            var flag = 1;
+            var message = ""; 
+            
+            if (name.value == "") {
+                msg[0] = "Name is Required"+('<br>');
+                flag = 0;
+            } else {
+                msg[0] = "";
+            }
+
+            if (gender[0].checked == false && gender[1].checked == false) {
+                msg[1] = "Select Gender"+('<br>');
+                flag = 0;
+            } else {
+                msg[1] = "";
+            }
+
+            if (UserName.value == "") {
+                msg[2] = "UserName is Required"+('<br>');
+                flag = 0;
+            } else {
+                msg[2] = "";
+            }
+
+            if (Password.value == "") {
+                msg[3] = "Password is Required"+('<br>');
+                flag = 0;
+            } else {
+                msg[3] = "";
+            }
+
+            if (Password.value.length < 8) {
+                msg[3] = "Password must be at least 8 characters long"+('<br>');
+                flag = 0;
+            } else {
+                msg[3] = "";
+            }
+
+            if (flag == 0) {
+                for (var i = 0; i <= 4; i++) {
+                    if (msg[i] != "") {
+                        message = message + msg[i] + "\n";
+                    }
+                }
+                document.getElementById('error').innerHTML = message;
+                return false;  
+            } else {
+                return true;  
+            }
+        }
+    </script>
+</body>
+</html>

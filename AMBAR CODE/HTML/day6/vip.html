@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+           
+        }
+        body{
+            background: url('/HTML/media/image/IMG-20250321-WA0007.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-size: 1.7rem;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            width: 400px;
+            height: 500px;
+            margin: 70px auto;
+            border-radius: 50px;
+            box-shadow: inset 4px 4px 10px gray;
+            
+        }
+        .input1 input{
+            border: none;
+            border-bottom: 2px solid black;
+            margin: 30px;
+            width: 500px;
+            font-size: large;
+
+        }
+        div h1{
+        padding: 40px;
+        padding-top: 0;
+        }
+        .date input{
+            border: none;
+            border-bottom: 2px solid black;
+            margin: 20px;
+            width: 500px;
+        }
+        .input2 input{
+            border: none;
+            font-size: large;
+            margin: 20px;
+            width: 500px;
+
+        }
+        .input3 p{
+        width: 500px;
+        font-weight: bold;
+        margin: 20px;
+        }
+        input{
+            padding: 10px;
+        }
+        .input1 input:hover,.date input:hover{
+            border: 4px solid black;
+            background-color: rgb(223, 203, 166);
+        }
+        .btn button{
+            width: 500px;
+            border-radius: 10px;
+            background: linear-gradient(to right,lightblue,purple,pink);
+            color: white;
+            padding: 10px;
+            font-size: large;
+            font-weight: bolder;
+
+            margin: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div><h1>Registration</h1></div>
+        <div class="input1"><input type="text" placeholder="Full Name"></div>
+        
+        <div class="input1"><input type="email" placeholder="Email Id"></div>
+        
+        <div class="input1"><input type="text" placeholder="Phone Number"></div>
+        
+        <div class="date"><input type="date"></div>
+        <div class="input1"><input type="text" placeholder="Aadhar Card"></div>
+        <div class="input2"><input type="file"></div>
+        <div class="input3"><p>*Please Add the aadhar card in pdf Format</p></div>
+        <div class="btn"><button>Register</button></div>
+    </div>
+</body>
+</html>

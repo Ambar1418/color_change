@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Splice</title>
+    <script>
+    //  Example 1
+        let fruits=["Apple","banana","Orange"];
+        document.write(`Size: ${fruits.length}<br>`)
+        document.write(`values:${fruits}<br>`)
+
+        let x=fruits.splice(2,1);
+        document.write(`${x}<br>`)
+        document.write(`${fruits}<br>`)
+        
+// Example 2
+        let f2=["Apple","banana","Orange","grapes"];
+        document.write(`Size: ${f2.length}<br>`)
+        document.write(`values:${f2}<br>`)
+
+        let x2=f2.splice(1,2);
+        document.write(`${x2}<br>`)
+        document.write(`${f2}<br>`)
+
+        // Example 3
+        let f3=["Apple","banana","Orange","grapes"];
+        document.write(`Size: ${f3.length}<br>`);
+        document.write(`values:${f3}<br>`);
+
+        let x3=f3.splice(2);
+        document.write(`${x3}<br>`);
+        document.write(`${f3}<br>`);
+    
+        // Example 4
+        let f4=["Apple","banana","Orange","grapes"];
+        document.write(`values:${f4}<br>`);
+
+        let x4=f4.splice(2,1,"kaju");
+        document.write(`${x4}<br>`);
+        document.write(`${f4}<br>`);
+
+
+        // Example 5
+        let f5=["Apple","banana","Orange","grapes"];
+        document.write(`values:${f5}<br>`);
+
+        let x5=f5.splice(0,4,"kaju");
+        document.write(`${f5}<br>`);
+        document.write(`Size: ${f5.length}<br>`);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

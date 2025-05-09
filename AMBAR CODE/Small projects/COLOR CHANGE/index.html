@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gradient Color Generator</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+      body {
+        height: 100vh;
+        background: linear-gradient(to right, #051937, #008793);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        color: white;
+        text-align: center;
+      }
+      section {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(10px);
+      }
+      .button-container {
+        margin-bottom: 20px;
+      }
+      button {
+        border: none;
+        padding: 15px 25px;
+        margin: 10px;
+        font-size: 18px;
+        border-radius: 30px;
+        cursor: pointer;
+        color: white;
+        font-weight: bold;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+      }
+      button:hover {
+        transform: scale(1.05);
+      }
+      h2 {
+        margin-top: 20px;
+        font-size: 24px;
+        font-weight: 600;
+      }
+      .copycode {
+        margin-top: 20px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 15px;
+        font-family: monospace;
+        font-size: 16px;
+        color: white;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(5px);
+        cursor: pointer; /* Added cursor pointer to indicate clickable */
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div class="button-container">
+        <button id="mybtn1">#051937</button>
+        <button id="mybtn2">#008793</button>
+      </div>
+      <h2>Copy Your Code Here</h2>
+      <div class="copycode" id="copycode">
+        background-image: linear-gradient(to right, #051937, #008793);
+      </div>
+    </section>
+
+    <script>
+      let b1 = document.getElementById("mybtn1");
+      let b2 = document.getElementById("mybtn2");
+      let copyCode = document.getElementById("copycode");
+
+      let color1 = "#051937";
+      let color2 = "#008793";
+
+      const generateRandomColor = () => {
+        let hexValues = "0123456789abcdef";
+        let color = "#";
+        for (let i = 0; i < 6; i++) {
+          color += hexValues[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      };
+
+      const updateBackground = () => {
+        document.body.style.background = `linear-gradient(to right, ${color1}, ${color2})`;
+        copyCode.textContent = `background-image: linear-gradient(to right, ${color1}, ${color2});`;
+      };
+
+      const handleb1 = () => {
+        color1 = generateRandomColor();
+        b1.style.backgroundColor = color1;
+        b1.textContent = color1;
+        updateBackground();
+      };
+
+      const handleb2 = () => {
+        color2 = generateRandomColor();
+        b2.style.backgroundColor = color2;
+        b2.textContent = color2;
+        updateBackground();
+      };
+
+      b1.addEventListener("click", handleb1);
+      b2.addEventListener("click", handleb2);
+
+      copyCode.addEventListener("click", () => {
+        navigator.clipboard.writeText(copyCode.innerText).then(() => {
+          alert("Text is copied!");
+        });
+      });
+    </script>
+  </body>
+</html>

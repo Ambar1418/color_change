@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getElementsByclassname</title>
+</head>
+<body>
+    <p class="p1">This is para1</p>
+    <p class="p1">This is para2</p>
+    <p3>This is para3</p3>
+    <button onclick="count()">Count p using Class name</button>
+    <script>
+        function count()
+        {
+            var d=document.getElementsByClassName('p1')
+            alert("Total number of paragraph with class name par1:" + d.length);
+            document.write(d[1])
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let fruits=["Apple","orange","grapes"];
+        fruits.splice(1,0,"ram");
+        console.log(fruits);
+        console.log(fruits.indexOf("Apple"));
+        // when we use lastindexof than it trace backword
+        const num=[1,2,3,4,5,6,7,8,9,6];
+        console.log(num.indexOf(5,6));
+        console.log(num.lastIndexOf(5));
+        console.log(num.includes(6));
+        console.log(num.includes(61));
+
+        let months=["jan","feb","mar","april","may","june","july","aug","sep","oct"," nov"]
+        months.splice(months.length,0,"dec");
+        console.log(months);
+        
+    </script>
+</body>
+</html>

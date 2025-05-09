@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+         border: 5px solid rgb(26, 22, 22);
+         height: 100px;
+         width: 100px;
+         display: flex;
+        }
+    </style>
+</head>
+<body>
+    <h1>M1=20</h1>
+    <h1>M2=10</h1>
+   <table border="2px">
+    <tr>
+        <th><h2>ADDI.</h2>
+            <div id="data1">
+            </div></th>
+        <th><h2>SUB.</h2>
+            <div id="data2"></div></th>
+       <th>
+        <h2>Mult.</h2>
+        <div id="data3"></div>
+       </th>
+        <th>  
+            <h2>Div.</h2>
+        <div id="data4"></div>
+        </th>
+       <script>
+           //var m1=20;
+           //var m2=10;
+           var m1=parseInt(prompt("Enter the value of m1"));
+           var m2=parseInt(prompt("Enter the value of m2"));
+           add=m1+m2;
+           var sub;
+           sub=m1-m2;
+           var mult;
+           mult=m1*m1;
+           var div;
+           div=m1/m2;
+           document.getElementById('data1').innerHTML=(add);
+           document.getElementById('data2').innerHTML=(sub);
+           document.getElementById('data3').innerHTML=(mult);
+           document.getElementById('data4').innerHTML=(div);
+       </script>
+    </tr>
+   </table>
+</body>
+</html>

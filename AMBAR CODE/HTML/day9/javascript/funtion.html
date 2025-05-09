@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body bgcolor="black">
+    <button onclick="add()"><h2>ADD</h2></button>
+    <br>
+    <br>
+    <button onclick="sub()"><h2>SUB</h2></button>
+    <br>
+    <br>
+    <button onclick="mult()"><h2>MULT</h2></button>
+    <br>
+    <br>
+    <button onclick="div()"><h2>Div</h2></button>
+    <script>
+       function add()
+       {
+        var x=(parseInt(prompt("Enter the value of a")));
+        var y=(parseInt(prompt("Enter the value of b")));
+        var c;
+        c=x+y;
+        alert('c='+c)
+       }
+       function sub()
+       {
+        var x=(parseInt(prompt("Enter the value of a")));
+        var y=(parseInt(prompt("Enter the value of b")));
+        var c;
+        c=x-y;
+        alert('c='+c)
+       }
+       function mult()
+       {
+        var x=(parseInt(prompt("Enter the value of a")));
+        var y=(parseInt(prompt("Enter the value of b")));
+        var c;
+        c=x*y;
+        alert('c='+c)
+       }
+       function div()
+       {
+        var x=(parseInt(prompt("Enter the value of a")));
+        var y=(parseInt(prompt("Enter the value of b")));
+        var c;
+        c=x/y;
+        alert('c='+c)
+       }
+    </script>
+</body>
+</html>

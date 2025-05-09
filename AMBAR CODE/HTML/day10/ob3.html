@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label>Enter The user name:</label>
+    <input type="text" id="uid" placeholder="Username" size="25">
+    <br>
+    <br>
+    <label>Enter The password:</label>
+    <input type="password" id="pwd" placeholder="password" size="25">
+    <button id="b1" onclick="Show()">Show Password</button>
+    <button id="b2" onclick="Hide()">Hide Password</button>
+    <br>
+    <input type="submit" value="login" style="background-color: rgb(165, 87, 87);">
+    <script>
+        function Show()
+        {
+            pwd.type='text'
+            document.getElementById('b1').disabled=true;
+            document.getElementById('b2').disabled=false;
+        }
+        function Hide()
+        {
+         pwd.type='Password'
+         document.getElementById('b2').disabled=true;
+         document.getElementById('b1').disabled=false;
+        }
+    </script>
+</body>
+</html>

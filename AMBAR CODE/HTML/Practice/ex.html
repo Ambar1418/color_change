@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student LocalStorage Display</title>
+    <style>
+      .container {
+        text-align: center;
+        margin-top: 300px;
+      }
+      .container button {
+        margin: 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      button {
+        background-color: rgb(195, 178, 211);
+      }
+      #savebtn {
+        background-color: bisque;
+      }
+      #getbtn {
+        background-color: rgb(86, 174, 180);
+      }
+      #removebtn {
+        background-color: rgb(200, 58, 211);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <button id="savebtn">Save Student</button>
+      <button id="getbtn">Get Student</button>
+      <button id="removebtn">Remove Student</button>
+    </div>
+
+    <script>
+      const student = {
+        Name: "Ambargupta",
+        Age: 18,
+        Profession: "Student",
+      };
+
+      const addtodolist = () => {
+        localStorage.setItem("objectdata", JSON.stringify(student));
+        console.log("Student data saved successfully!");
+      };
+
+      const gettodolist = () => {
+        const data = localStorage.getItem("objectdata");
+
+        if (data) {
+          const studentData = JSON.parse(data);
+          console.log("Student Details:");
+          console.log("Name:", studentData.Name);
+          console.log("Age:", studentData.Age);
+          console.log("Profession:", studentData.Profession);
+        } else {
+          console.log("No student data found.");
+        }
+      };
+
+      const removetodolist = () => {
+        localStorage.removeItem("objectdata");
+        console.log("Student data removed successfully!");
+      };
+
+      document.getElementById("savebtn").addEventListener("click", addtodolist);
+      document.getElementById("getbtn").addEventListener("click", gettodolist);
+      document
+        .getElementById("removebtn")
+        .addEventListener("click", removetodolist);
+    </script>
+  </body>
+</html>

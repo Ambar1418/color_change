@@ -1,0 +1,201 @@
+/*UNIVERSAL Selector*/
+*{
+   font-family: Arial, Helvetica, sans-serif;
+   color: blue;
+}
+/*Type Selector*/
+/* Specificity Of Type sel >Universal sel*/
+p{
+  color: aqua;
+  border: blue dashed 2px;
+}
+/*ID Selector*/
+/* ID Sel> Type sel*/
+#p1{
+   background-color: black;
+   align-items: center;
+}
+/*Class Selector*/
+/* ID Specificity> class spe.*/
+/* Also we can give two class in one tag*/
+/*ID>CLASS>TYPE>UNIVERSAL Selector*/
+.top
+{
+   background-color: aqua;
+   align-self: center;
+}
+/*Grouping Selectors*/
+h1,h2,h3{
+   background-color: black;
+}
+/*combining Selectors*/
+p.main{
+   background-color: azure;
+}
+p.main#top{
+   background-color: blanchedalmond;
+}
+.main#top
+{
+   background-color: burlywood;
+}
+/*Descendent Selectors*/
+/*Parent and Child*/
+/* Like color aplied on only its child not parent*/
+p a
+{
+ background-color: cornsilk;
+}
+/*Inheritence Property*/
+/*Some property Doesnt support Inherit property*/
+/*With The Help of Inherit Keyword We can Use Property*/
+h1
+{
+   background-color: coral;
+   font-size: small;
+}
+em{
+   background-color: black inherit;
+}
+/*Pseudo Classes*/
+textarea:focus
+{
+   background-color: crimson;
+}
+a:hover
+{
+   background-color: antiquewhite;
+}
+a:visited
+{
+   background-color: aqua;
+   text-decoration: none;
+}
+a:active
+{
+   background-color: antiquewhite;
+   text-decoration: line-through;
+}
+a:hover#a1
+{
+   background-color: brown;
+   text-decoration: overline;
+}
+a:hover#a2
+{
+   background-color: aqua;
+   text-decoration: underline;
+}
+
+/**List Style In CSS**/
+ol{
+   list-style-type: none;
+}
+ol li{
+   background-color: aliceblue;
+}
+ol.in li{
+   list-style-position: inside;
+}
+ul{
+   list-style-image: url(/HTML/media/image/IMG-20250321-WA0006.jpg);
+   list-style: url(/HTML/media/image/channels4_profile.jpg) inside;
+}
+/*Why we write like this ?*/
+/*because if we doesnt write like this its effect the other #a tags */
+ul li a{
+   background-color: beige;
+   padding: 10px 20px; /*first value is for top and bootom and second for right and left*/
+   display: block;
+}
+ul li{
+   display: inline-block;
+}
+p.padding
+{
+   padding-left: 25px;
+   padding-right: 25px;
+   padding-top: 25px;
+   padding-bottom: 25px;
+   /*or*/
+   padding: 25px 25px 25px 25px;
+   /*or*/
+   padding: 25px 25px;
+}
+p.margin
+{
+ margin-top: 300px;
+ margin-left: auto;
+ margin-right: auto;
+}
+/* Display-Property*/
+/*Can Change Inline elements To block Elements and Vise-versa*/
+ul{
+   display: inline;
+}
+span{
+   width: 200px;/* inline ele. doesnt support height width*/
+   height: 200px;
+   border: 2px solid black;
+   /*if we use block display then it support*/
+   display: block;
+   /* If we want both height and width and also inline ele. than we use*/
+   display: inline-block;
+   /*if we give display none property than the particular block unvisibile and next next box one step up*/
+   display: none;
+   /*Visiblity hidden means it appers in that place but hidden*/
+   visibility: hidden;
+}
+/* peusdoside Selector */
+/* means color applied one odd rows */
+tr:nth-child(odd)
+{
+   background-color: beige;
+}
+tr:nth-child(1)
+{
+   background-color: antiquewhite;
+}
+tr:nth-child(4)
+{
+   background-color: antiquewhite;
+}
+/*Position Properties*/
+/* 1.Static 2.Relative 3.Absolute 4.Fixed 5.sticky*/
+/* 1.By default its always be static and dont applied height and width */
+div{
+   position: static;
+}
+/* if we give somthing upper than we give top 10px so it takes after upeer element place */
+div{
+   top: 10px;
+   position: relative;
+}
+/* can go anywhere */
+div{
+   position: absolute;
+}
+/* mixture of realtive and fixed */
+div{
+   top: 0px;
+   position: sticky;
+}
+/* 5. If we fixed position it not scroll fixe on one place */
+div{
+   position: fixed;
+}
+/* If the window is small than we use overflow property */
+div
+{
+overflow-x: auto;
+}
+/*Flex Peoperty */
+.flex-container
+{
+   display: flex;
+   height: 400px;
+   align-items: center;
+   justify-content: space-between;
+   justify-content: flex-end;
+   flex-wrap: wrap;
+}

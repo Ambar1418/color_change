@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Element ByTagname</title>
+</head>
+<body>
+    <h1></h1>
+    <h1>
+    </h1>
+    <h2>
+    </h2>
+    <h2>
+    </h2>
+    <p >This is para1</p>
+    <p >This is para2</p>
+    <div></div>
+    <div></div>
+    <button onclick="counttag()">Count text</button>
+    <script>
+        function counttag()
+        {
+            var a=prompt("Enter the tagname")
+            var i=document.getElementsByTagName(a)
+            alert("Total no. of tag name:"+i.length)
+        }
+    </script>
+</body>
+</html>

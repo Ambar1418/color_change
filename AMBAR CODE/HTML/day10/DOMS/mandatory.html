@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Field Required</title>
+</head>
+<body style="background-color: darkmagenta;">
+    <form method="post" action="">
+      <input type="text" name="name" id="name" placeholder="Enter the name:" size="30">
+      <br>
+      <br>
+      <input type="submit" value="login" style="color: hotpink;" onclick="error()">
+    </form>
+    <script>
+        function error(){
+         if(document.getElementById('name').value=="")
+         {
+            alert("name is mandatory");
+         }
+         else(document.getElementById('name'))
+         { 
+            alert("successfuly stored");
+         }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Youtube Clone</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <style>
+      span {
+        display: inline-block;
+      }
+      a {
+        color: rgb(210, 106, 106);
+        margin: 0 12px;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      a:hover {
+        color: black;
+        background: rgb(200, 87, 0);
+      }
+      img {
+        width: 40px;
+        height: 40px;
+      }
+      .nav {
+        display: flex;
+        justify-content: space-around;
+      }
+      .row {
+        background: black;
+        color: white;
+      }
+      .first {
+        padding: 5px 0;
+      }
+      .logo {
+        width: 100px;
+        color: wheat;
+      }
+      .second {
+        padding: 5px 0;
+      }
+      input {
+        height: 40px;
+        border-color: rgb(255, 12, 12);
+        border-radius: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row first">
+        <div class="nav">
+          <div class="logo">
+            <img src="/HTML/media/image/youtube_logo.png" alt="" />
+            <b><u>MYTUBE</u></b>
+          </div>
+
+          <input type="search" placeholder="Search" size="100" />
+
+          <img src="/HTML/media/image/mic.jpg" alt="" />
+          <img src="/HTML/media/image/video.png" alt="" />
+          <img src="/HTML/media/image/bell.png" alt="" />
+          <img width="50px" src="/HTML/media/image/profile1.jpg" alt="" />
+        </div>
+      </div>
+      <div class="row second">
+        <table width="100%">
+          <tr>
+            <td bgcolor="red" align="center"><a href="#">All</a></td>
+            <td align="center"><a href="#">Music</a></td>
+            <td><a href="#">Javascript</a></td>
+            <td>
+              <a href="#">Songs</a>
+            </td>
+            <td>
+              <a href="#">Bollywood</a>
+            </td>
+            <td>
+               <a href="#">HTML</a>
+            </td>
+            <td>
+              <a href="#">Adipurush</a>
+            </td>
+            <td>
+              <a href="#">React</a>
+            </td>
+            <td>
+              <a href="#">Nodejs</a>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="row third">
+        <div class="col-sm-4">
+          <video
+            width="400px"
+            src="/HTML/media/video/ram_siya_ram.mp4"
+            autoplay
+            controls
+          ></video>
+          <span
+            ><img src="/HTML/media/image/t-series.png" alt="" /><b
+              >Ram Siya Ram Jai Siya Ram </b
+            ><br />
+            T-Series Hindi <br />
+            29 Million Views-12 days ago
+          </span>
+        </div>
+        <div class="col-sm-4">
+          <video
+            width="400px"
+            src="/HTML/media/video/apna_bana_le.mp4"
+            controls
+          ></video>
+          <span
+            ><img src="/HTML/media/image/t-series.png" alt="" /><b
+              >Apna Bana Le Piya</b
+            ><br />
+            T-Series Hindi <br />
+            19 Million Views-12 days ago
+          </span>
+        </div>
+        <div class="col-sm-4">
+          <video
+            width="400px"
+            src="/HTML/media/video/chahun_me_ya_na.mp4"
+            controls
+          ></video>
+          <span
+            ><img src="/HTML/media/image/t-series.png" alt="" /><b
+              >Chahun Mai Ya Na </b
+            ><br />
+            T-Series Hindi <br />
+            299k Million Views-2 years ago
+          </span>
+        </div>
+      </div>
+      <div class="row third">
+        <div class="col-sm-4">
+          <video
+            width="400px"
+            src="/HTML/media/video/shayad.mp4"
+            autoplay
+            controls
+          ></video>
+          <span
+            ><img src="/HTML/media/image/t-series.png" alt="" /><b
+              >Shayad Cover Song </b
+            ><br />
+            T-Series Hindi <br />
+            14 Million Views-12 days ago
+          </span>
+        </div>
+        <div class="col-sm-4">
+          <video
+            width="400px"
+            src="/HTML/media/video/kaise_hua.mp4"
+            controls
+          ></video>
+          <span
+            ><img src="/HTML/media/image/t-series.png" alt="" /><b>Kaise Hua</b
+            ><br />
+            T-Series Hindi <br />
+            14 Million Views-12 days ago
+          </span>
+        </div>
+        <div class="col-sm-4">
+          <video
+            width="400px"
+            src="/HTML/media/video/saiyaan.mp4"
+            controls
+          ></video>
+          <span
+            ><img src="/HTML/media/image/t-series.png" alt="" /><b>Saiyaan </b
+            ><br />
+            T-Series Hindi <br />
+            14 Million Views-12 days ago
+          </span>
+        </div>
+      </div>
+      <div class="row">
+        <h1>Shorts</h1>
+        <div class="col-sm-4">
+          <video
+            width="400px"
+            src="/HTML/media/video/ramji_reel.mp4"
+            controls
+          ></video>
+        </div>
+        <div class="col-sm-4">
+          <video
+            width="400px"
+            src="/HTML/media/video/ramji_reel.mp4"
+            controls
+          ></video>
+        </div>
+        <div class="col-sm-4">
+          <video
+            width="400px"
+            src="/HTML/media/video/ramji_reel.mp4"
+            controls
+          ></video>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

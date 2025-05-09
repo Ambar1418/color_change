@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Center Rectangle</title>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #a10909;
+      }
+
+      .Rec {
+        width: 300px;
+        height: 150px;
+        background-color: #137ee8;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: background-color 0.5s ease, transform 0.3s ease;
+      }
+      .addtransition {
+        border-radius: 50%;
+      }
+      .addtransition2 {
+        border-radius: 50%;
+      }
+      .addtransition3 {
+        border-radius: 50%;
+        background-color: rgb(174, 226, 43);
+        translate: 30rem 0;
+      }
+      .addtransition4 {
+        border-radius: 50%;
+        background-color: rgb(212, 255, 0);
+        translate: -30rem 0;
+      }
+      .addtransition5 {
+        border-radius: 0%;
+        background-color: rgb(200, 255, 0);
+        translate: 0rem 0;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div class="Rec" id="rectangle">
+        <button id="mybtn">Click Me</button>
+      </div>
+    </section>
+
+    <script>
+      let btn = document.getElementById("mybtn");
+      let rect = document.getElementById("rectangle");
+
+      const handleClick = () => {
+        console.log("Click");
+        rect.style.backgroundColor = "red";
+      };
+      const handleClick2 = () => {
+        console.log("dblClick");
+        rect.style.backgroundColor = "green";
+        rect.classList.add("addtransition");
+      };
+      const handleClick3 = () => {
+        rect.classList.add("addtransition2");
+      };
+      const handleClick4 = () => {
+        rect.classList.add("addtransition3");
+      };
+      const handleClick5 = () => {
+        rect.classList.add("addtransition4");
+      };
+      const handleClick6 = () => {
+        rect.classList.add("addtransition5");
+      };
+      btn.addEventListener("click", handleClick);
+      btn.addEventListener("dblclick", handleClick2);
+      rect.addEventListener("mouseover", handleClick3);
+      rect.addEventListener("mouseout", handleClick4);
+      rect.addEventListener("mousedown", handleClick5);
+      rect.addEventListener("mouseup", handleClick6);
+    </script>
+  </body>
+</html>

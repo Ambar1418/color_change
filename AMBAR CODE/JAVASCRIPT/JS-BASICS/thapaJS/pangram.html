@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const pangramchecker = (str) => {
+        let inputstr = str.toLowerCase().split("");
+
+        const values = inputstr.filter(
+          (curele) =>
+            curele.charCodeAt() >= "a".charCodeAt() &&
+            curele.charCodeAt() <= "z".charCodeAt()
+        );
+        console.log(values);
+        console.log([...new Set(values)].length);
+      };
+      console.log(
+        pangramchecker(
+          "my favorate web-series is game of thrones and my gavorate character is a jonsnow who knows nothing, who loves yagreet"
+        )
+      );
+    </script>
+  </body>
+</html>

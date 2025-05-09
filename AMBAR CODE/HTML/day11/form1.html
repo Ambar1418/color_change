@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div align="center">
+        <form method="post" onsubmit="return dataverify()">
+         <table align="center" border="2">
+           <tr>
+            <td>Name</td>
+            <td>
+                <input type="text" id="uid">
+            </td>
+           </tr>
+          <tr>
+            <td>Password</td>
+            <td>
+                <input type="password" id="pwd">
+            </td>
+          </tr>
+        <tr>
+            <td colspan="2">
+            <input type="submit" value="signin">
+            </td>
+        </tr>
+         </table>
+        </form>
+        <h1 id="abc"></h1>
+    </div>
+    <script>
+        function dataverify()
+        {
+            var name = document.getElementById('uid');
+            var password = document.getElementsByName('pwd');
+            var m=new Array();
+            var flag = 1;
+            var message = ""; 
+            
+            if (name.value == "") {
+                m[0] = "Name is Required"+('<br>');
+                flag = 0;
+            } else {
+                m[0] = "";
+            }
+            if (password.value == "") {
+                m[1] = "Password is Required"+('<br>');
+                flag = 0;
+            } else {
+                m[1] = "";
+            }
+            if (flag == 0) {
+                for (var i = 0; i <= 1; i++) {
+                    if (m[i] != "") {
+                        message = message + m[i] + "<br>";
+                    }
+                } 
+                alert(m);
+                return false;
+            } 
+            else{
+                 return true;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+@font-face {
+    font-family: gr;
+    src: url(/Fonts/font.otf);
+}
+@font-face {
+    font-family: jb;
+    src: url(/Fonts/font1.ttf);
+}
+@font-face {
+    font-family: jr;
+    src: url(/Fonts/font2.ttf);
+}
+@font-face {
+    font-family: t;
+    src: url(/Fonts/font3.ttf);
+}
+
+body{
+    background: #40E0D0;
+    background: -webkit-linear-gradient(to right, #FF0080, #ff00bfd2, #041413);  
+    background: linear-gradient(to right, #FF0080, #FF8C00, #40E0D0);
+}
+
+#banner{
+    width: 100%;
+    font-family: 'jb';
+    font-size: 30px;
+    color: white;
+    background-color: black;
+    padding: 10px 0px;
+    text-align: center;
+    box-shadow: 1px 1px 5px black  
+}
+#box{
+    background: #333333;
+    background: -webkit-linear-gradient(to right, #dd1818, #333333); 
+    background: linear-gradient(to right, #dd1818, #333333); 
+    height: 400px;
+    width: 40%;
+    box-shadow: 0px 0px 20px black;
+    border-radius: 10px;
+    color: white;
+    align-items: center;
+}
+
+.lgn{
+    font-family: t;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.uid{
+    background-color: transparent;
+    border: 1px solid black;
+    margin-bottom: 20px;
+
+}
+
+.un{
+    font-family: t;
+    font-size: 18px;
+    color: white;
+    margin-bottom: 20px;
+    margin-right: 18px;
+}
+input{
+    color: white;
+    font-family: t;
+    font-size: 17px;
+    padding: 5px;
+    background-color: transparent;
+    border: 1px solid white;
+    transition: 0.5s ease;
+}
+input:hover, input:focus{
+    background-color: white;
+    color: black;
+}
+.btn-lgn button{
+    margin-top: 1px;
+    font-size: 15px;
+    border: 2px solid;
+    background-color: transparent;
+}
+
+a.btn-rn:link, a.btn-rn:active, a.btn-rn:visited{
+    font-family: jr;
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+a.btn-rn:hover{
+    font-family: 'jr';
+    font-size: 22px;
+    color: white;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.mq{
+    color: white;
+    font-family: gr;
+    margin-top: 40px;
+    font-size: 50px;
+    text-shadow: 1px 1px 1px black;
+}
+
+#footer{
+    width: 100%;
+    background-color: lightsalmon;
+    font-family: 'jr';
+    padding: 10px 0px;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    bottom: 0;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @keyframes colorchange
+        {
+            0%
+            {
+                background: rgb(255, 0, 174);
+                left: 100%;
+                top: 0px;
+            }
+            25%
+            {
+                background: rgb(0, 110, 255);
+                left: 0px;
+                top: 500px;
+            }
+            50%
+            {
+                background: rgb(255, 0, 123);
+                left: 500px;
+                top: 500px;
+            }
+            75%
+            {
+                background: yellow;
+                left: 500px;
+                top: 500px;
+            }
+            100%
+            {
+                background: red;
+                left: 100px;
+                top: 100px;
+            }
+        }
+        .main{
+            height: 300px;
+            width: 300px;
+            border-radius: 500px;
+            background: red;
+            position: relative;
+            animation-name: colorchange;
+            animation-duration: 5s;
+            animation-delay: 3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+
+    </div>
+</body>
+</html>
