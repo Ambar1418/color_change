@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Key Event Display</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+      body {
+        height: 100vh;
+        margin: 0;
+        font-family: "Segoe UI", sans-serif;
+        background: linear-gradient(to right, #091614, #acb6e5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .container {
+        background: #fff;
+        padding: 30px 40px;
+        border-radius: 20px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        width: 350px;
+        text-align: center;
+      }
+
+      input[type="text"] {
+        padding: 12px 20px;
+        width: 100%;
+        font-size: 1.1rem;
+        border: 2px solid #999;
+        border-radius: 10px;
+        margin-bottom: 25px;
+        transition: 0.3s;
+      }
+
+      input[type="text"]:focus {
+        outline: none;
+        border-color: #4c6ef5;
+        box-shadow: 0 0 10px #4c6ef5;
+      }
+
+      .output {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .info-box {
+        background: #f1f5ff;
+        border: 1px solid #c3dafe;
+        border-radius: 12px;
+        padding: 10px 15px;
+        text-align: left;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+        transition: 0.3s ease;
+      }
+
+      .label {
+        font-weight: 600;
+        color: #334155;
+      }
+
+      .value {
+        font-weight: 500;
+        color: #1e293b;
+      }
+
+      @keyframes slideIn {
+        from {
+          transform: translateY(50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <input type="text" id="myinput" placeholder="Type something..." />
+      <div class="output">
+        <div class="info-box">
+          <span class="label">Key Pressed:</span>
+          <span class="value keypressed">-</span>
+        </div>
+        <div class="info-box">
+          <span class="label">Key Code:</span>
+          <span class="value keycode">-</span>
+        </div>
+        <div class="info-box">
+          <span class="label">Char Code:</span>
+          <span class="value charcode">-</span>
+        </div>
+        <div class="info-box">
+          <span class="label">Event Type:</span>
+          <span class="value eventtype">-</span>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const myInput = document.getElementById("myinput");
+
+      const keyPressed = document.querySelector(".keypressed");
+      const keyCode = document.querySelector(".keycode");
+      const charCode = document.querySelector(".charcode");
+      const eventType = document.querySelector(".eventtype");
+
+      myInput.addEventListener("keyup", (event) => {
+        keyPressed.textContent = `Key Pressed: ${event.key}`;
+        keyCode.textContent = `Key Code: ${event.keyCode}`;
+        charCode.textContent = `Char Code: ${event.key.charCodeAt(0)}`;
+        eventType.textContent = `Event Type: ${event.type}`;
+
+        document.querySelectorAll(".output p").forEach((el) => {
+          el.classList.remove("show");
+          void el.offsetWidth;
+          el.classList.add("show");
+        });
+      });
+    </script>
+  </body>
+</html>

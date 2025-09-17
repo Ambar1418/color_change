@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Command Line Calculator</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #00ff41;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .terminal-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #0d1117;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        .terminal-header {
+            background: #21262d;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .terminal-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .close { background: #ff5f56; }
+        .minimize { background: #ffbd2e; }
+        .maximize { background: #27ca3f; }
+        
+        .terminal-title {
+            margin-left: 20px;
+            color: #8b949e;
+            font-size: 14px;
+        }
+        
+        .terminal-body {
+            padding: 20px;
+            min-height: 500px;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        
+        .output-line {
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        
+        .prompt {
+            color: #58a6ff;
+        }
+        
+        .result {
+            color: #7ee787;
+            font-weight: 500;
+        }
+        
+        .error {
+            color: #f85149;
+        }
+        
+        .info {
+            color: #a5a5a5;
+        }
+        
+        .input-container {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        
+        .input-prompt {
+            color: #58a6ff;
+            margin-right: 8px;
+        }
+        
+        #calculator-input {
+            background: transparent;
+            border: none;
+            color: #00ff41;
+            font-family: inherit;
+            font-size: 16px;
+            outline: none;
+            flex: 1;
+            caret-color: #00ff41;
+        }
+        
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 20px;
+            background: #00ff41;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        .welcome-text {
+            color: #7ee787;
+            margin-bottom: 20px;
+        }
+        
+        .help-text {
+            color: #a5a5a5;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .terminal-container {
+                margin: 10px;
+                border-radius: 8px;
+            }
+            
+            .terminal-body {
+                padding: 15px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal-container">
+        <div class="terminal-header">
+            <div class="terminal-button close"></div>
+            <div class="terminal-button minimize"></div>
+            <div class="terminal-button maximize"></div>
+            <div class="terminal-title">Command Line Calculator</div>
+        </div>
+        
+        <div class="terminal-body" id="terminal-output">
+            <div class="welcome-text">
+                ╔══════════════════════════════════════════════════════════╗<br>
+                ║                 COMMAND LINE CALCULATOR                  ║<br>
+                ║                      Version 1.0                        ║<br>
+                ╚══════════════════════════════════════════════════════════╝
+            </div>
+            
+            <div class="help-text">
+                Supported operations: +, -, *, /<br>
+                Supports both integers and floating-point numbers<br>
+                Type 'help' for more information or 'exit' to quit<br>
+            </div>
+            
+            <div class="input-container">
+                <span class="input-prompt">calc></span>
+                <input type="text" id="calculator-input" autocomplete="off" spellcheck="false">
+                <span class="cursor"></span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class CommandLineCalculator {
+            constructor() {
+                this.input = document.getElementById('calculator-input');
+                this.output = document.getElementById('terminal-output');
+                this.history = [];
+                this.setupEventListeners();
+                this.focusInput();
+            }
+            
+            setupEventListeners() {
+                this.input.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        this.processInput();
+                    }
+                });
+                
+                // Keep input focused
+                document.addEventListener('click', () => {
+                    this.focusInput();
+                });
+            }
+            
+            focusInput() {
+                this.input.focus();
+            }
+            
+            processInput() {
+                const input = this.input.value.trim();
+                
+                // Display the input command
+                this.addOutput(`<span class="prompt">calc></span> ${input}`);
+                
+                if (input === '') {
+                    this.input.value = '';
+                    this.createNewInputLine();
+                    return;
+                }
+                
+                if (input.toLowerCase() === 'exit') {
+                    this.addOutput('<span class="info">Calculator terminated. Thanks for using!</span>');
+                    this.input.disabled = true;
+                    return;
+                }
+                
+                if (input.toLowerCase() === 'help') {
+                    this.showHelp();
+                    this.input.value = '';
+                    this.createNewInputLine();
+                    return;
+                }
+                
+                if (input.toLowerCase() === 'clear') {
+                    this.clearScreen();
+                    return;
+                }
+                
+                if (input.toLowerCase() === 'history') {
+                    this.showHistory();
+                    this.input.value = '';
+                    this.createNewInputLine();
+                    return;
+                }
+                
+                // Process mathematical expression
+                this.calculateExpression(input);
+                this.input.value = '';
+                this.createNewInputLine();
+            }
+            
+            calculateExpression(expression) {
+                try {
+                    // Basic validation - only allow numbers, operators, parentheses, and decimal points
+                    if (!/^[0-9+\-*/.() \s]+$/.test(expression)) {
+                        throw new Error('Invalid characters in expression');
+                    }
+                    
+                    // Replace any potential security risks
+                    const sanitized = expression.replace(/[^0-9+\-*/.() \s]/g, '');
+                    
+                    // Evaluate the expression safely
+                    const result = this.safeEval(sanitized);
+                    
+                    if (result === null || result === undefined || !isFinite(result)) {
+                        throw new Error('Invalid calculation result');
+                    }
+                    
+                    // Format the result
+                    const formattedResult = this.formatNumber(result);
+                    this.addOutput(`<span class="result">${formattedResult}</span>`);
+                    
+                    // Add to history
+                    this.history.push({
+                        expression: expression,
+                        result: formattedResult
+                    });
+                    
+                } catch (error) {
+                    this.addOutput(`<span class="error">Error: ${this.getErrorMessage(error.message)}</span>`);
+                }
+            }
+            
+            safeEval(expression) {
+                // Simple recursive descent parser for basic arithmetic
+                const tokens = this.tokenize(expression);
+                let index = 0;
+                
+                const parseExpression = () => {
+                    let result = parseTerm();
+                    
+                    while (index < tokens.length && (tokens[index] === '+' || tokens[index] === '-')) {
+                        const operator = tokens[index++];
+                        const right = parseTerm();
+                        result = operator === '+' ? result + right : result - right;
+                    }
+                    
+                    return result;
+                };
+                
+                const parseTerm = () => {
+                    let result = parseFactor();
+                    
+                    while (index < tokens.length && (tokens[index] === '*' || tokens[index] === '/')) {
+                        const operator = tokens[index++];
+                        const right = parseFactor();
+                        if (operator === '/') {
+                            if (right === 0) throw new Error('Division by zero');
+                            result = result / right;
+                        } else {
+                            result = result * right;
+                        }
+                    }
+                    
+                    return result;
+                };
+                
+                const parseFactor = () => {
+                    if (tokens[index] === '(') {
+                        index++; // consume '('
+                        const result = parseExpression();
+                        if (tokens[index] !== ')') throw new Error('Missing closing parenthesis');
+                        index++; // consume ')'
+                        return result;
+                    }
+                    
+                    if (tokens[index] === '-') {
+                        index++; // consume '-'
+                        return -parseFactor();
+                    }
+                    
+                    if (tokens[index] === '+') {
+                        index++; // consume '+'
+                        return parseFactor();
+                    }
+                    
+                    const token = tokens[index++];
+                    const num = parseFloat(token);
+                    if (isNaN(num)) throw new Error('Invalid number: ' + token);
+                    return num;
+                };
+                
+                return parseExpression();
+            }
+            
+            tokenize(expression) {
+                const tokens = [];
+                let current = '';
+                
+                for (let i = 0; i < expression.length; i++) {
+                    const char = expression[i];
+                    
+                    if (char === ' ') continue;
+                    
+                    if ('+-*/()'.includes(char)) {
+                        if (current) {
+                            tokens.push(current);
+                            current = '';
+                        }
+                        tokens.push(char);
+                    } else {
+                        current += char;
+                    }
+                }
+                
+                if (current) tokens.push(current);
+                return tokens;
+            }
+            
+            formatNumber(num) {
+                // Handle very large or very small numbers
+                if (Math.abs(num) > 1e15 || (Math.abs(num) < 1e-10 && num !== 0)) {
+                    return num.toExponential(6);
+                }
+                
+                // Round to avoid floating point precision issues
+                const rounded = Math.round(num * 1e10) / 1e10;
+                
+                // Return integer if it's a whole number
+                return rounded % 1 === 0 ? rounded.toString() : rounded.toString();
+            }
+            
+            getErrorMessage(error) {
+                if (error.includes('Division by zero')) return 'Division by zero is not allowed';
+                if (error.includes('Invalid characters')) return 'Invalid characters in expression. Use only numbers and +, -, *, /, ()';
+                if (error.includes('Invalid number')) return 'Invalid number format';
+                if (error.includes('Missing closing parenthesis')) return 'Missing closing parenthesis';
+                return 'Invalid mathematical expression';
+            }
+            
+            showHelp() {
+                const helpText = `
+<span class="info">Available Commands:</span>
+<span class="help-text">  Mathematical expressions: 2 + 3, 10.5 * 2, (4 + 5) / 3</span>
+<span class="help-text">  help     - Show this help message</span>
+<span class="help-text">  clear    - Clear the screen</span>
+<span class="help-text">  history  - Show calculation history</span>
+<span class="help-text">  exit     - Exit the calculator</span>
+
+<span class="info">Supported Operations:</span>
+<span class="help-text">  +  Addition</span>
+<span class="help-text">  -  Subtraction</span>
+<span class="help-text">  *  Multiplication</span>
+<span class="help-text">  /  Division</span>
+<span class="help-text">  () Parentheses for grouping</span>
+
+<span class="info">Examples:</span>
+<span class="help-text">  2 + 3.14</span>
+<span class="help-text">  (10 + 5) * 2</span>
+<span class="help-text">  100 / 3</span>
+                `;
+                this.addOutput(helpText);
+            }
+            
+            showHistory() {
+                if (this.history.length === 0) {
+                    this.addOutput('<span class="info">No calculation history available</span>');
+                    return;
+                }
+                
+                this.addOutput('<span class="info">Calculation History:</span>');
+                this.history.slice(-10).forEach((item, index) => {
+                    this.addOutput(`<span class="help-text">  ${item.expression} = ${item.result}</span>`);
+                });
+            }
+            
+            clearScreen() {
+                this.output.innerHTML = `
+                    <div class="welcome-text">
+                        ╔══════════════════════════════════════════════════════════╗<br>
+                        ║                 COMMAND LINE CALCULATOR                  ║<br>
+                        ║                      Version 1.0                        ║<br>
+                        ╚══════════════════════════════════════════════════════════╝
+                    </div>
+                    
+                    <div class="help-text">
+                        Supported operations: +, -, *, /<br>
+                        Supports both integers and floating-point numbers<br>
+                        Type 'help' for more information or 'exit' to quit<br>
+                    </div>
+                `;
+                this.input.value = '';
+                this.createNewInputLine();
+            }
+            
+            addOutput(content) {
+                const line = document.createElement('div');
+                line.className = 'output-line';
+                line.innerHTML = content;
+                this.output.appendChild(line);
+                this.scrollToBottom();
+            }
+            
+            createNewInputLine() {
+                // Remove the current input container
+                const currentInput = this.output.querySelector('.input-container');
+                if (currentInput) {
+                    currentInput.remove();
+                }
+                
+                // Create new input line
+                const inputContainer = document.createElement('div');
+                inputContainer.className = 'input-container';
+                inputContainer.innerHTML = `
+                    <span class="input-prompt">calc></span>
+                    <input type="text" id="calculator-input" autocomplete="off" spellcheck="false">
+                    <span class="cursor"></span>
+                `;
+                
+                this.output.appendChild(inputContainer);
+                
+                // Update input reference
+                this.input = document.getElementById('calculator-input');
+                this.setupEventListeners();
+                this.focusInput();
+                this.scrollToBottom();
+            }
+            
+            scrollToBottom() {
+                this.output.scrollTop = this.output.scrollHeight;
+            }
+        }
+        
+        // Initialize calculator when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new CommandLineCalculator();
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9673fad0e62b57ad',t:'MTc1Mzg2OTMyMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

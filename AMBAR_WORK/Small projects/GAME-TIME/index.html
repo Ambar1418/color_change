@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stopwatch</title>
+    <style>
+      body {
+        background-color: #2d2f4a;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .container {
+        background-color: #1e1f2c;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        text-align: center;
+      }
+
+      #display {
+        font-size: 70px;
+        color: #ff5e7d;
+        margin-bottom: 30px;
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .buttons div {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 20px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+      }
+
+      #startBtn {
+        background-color: #f7f06a;
+        color: #444;
+        font-weight: bold;
+        border: 2px solid yellow;
+      }
+
+      button:hover {
+        transform: scale(1.05);
+      }
+
+      button:not(#startBtn) {
+        background-color: #eee;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="display">0</div>
+      <div class="buttons">
+        <div>
+          <button onclick="startTimer()" id="startBtn">Start</button>
+          <button onclick="stopTimer()">Stop</button>
+          <button onclick="clearTime()">clearTime</button>
+        </div>
+        <div>
+          <button onclick="resetTimer()">Reset</button>
+          <button onclick="getTime()">getTime</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      let timer;
+      let count = 0;
+
+      function updateDisplay() {
+        document.getElementById("display").textContent = count;
+      }
+
+      function startTimer() {
+        if (!timer) {
+          timer = setInterval(() => {
+            count++;
+            updateDisplay();
+          }, 1000);
+        }
+      }
+
+      function stopTimer() {
+        clearInterval(timer);
+        timer = null;
+      }
+
+      function resetTimer() {
+        stopTimer();
+        count = 0;
+        updateDisplay();
+      }
+
+      function getTime() {
+        alert("Current Time: " + count + " seconds");
+      }
+
+      function clearTime() {
+        stopTimer();
+        count = 0;
+        updateDisplay();
+      }
+    </script>
+  </body>
+</html>

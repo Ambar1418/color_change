@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neon Digital Clock</title>
+    <style>
+      body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #2f2f4f;
+        font-family: "Segoe UI", sans-serif;
+      }
+
+      .clock-container {
+        display: flex;
+        align-items: center;
+        background-color: #1a1a1a;
+        border: 3px solid #ffff66;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(255, 255, 100, 0.4);
+        padding: 20px 40px;
+        position: relative;
+      }
+
+      .clock-container::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120px;
+        height: 10px;
+        background-color: #ffff66;
+        border-radius: 5px;
+        filter: blur(3px);
+      }
+
+      .sidebar {
+        display: flex;
+        flex-direction: column;
+        margin-right: 20px;
+        color: white;
+        font-size: 1.2rem;
+      }
+
+      .icon {
+        margin: 8px 0;
+        opacity: 0.6;
+      }
+
+      .clock-display {
+        font-size: 3rem;
+        color: #ff4d6d;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="clock-container">
+      <div class="sidebar">
+        <div class="icon">⏰</div>
+        <div class="icon">⏱</div>
+        <div class="icon">⏲</div>
+      </div>
+      <div class="clock-display">
+        <span id="time">11:45:00 PM</span>
+      </div>
+    </div>
+
+    <script>
+       const currenttime=()=>{
+            let curtime=new Date().toLocaleTimeString();
+            document.getElementById("time").innerText=curtime;
+       };
+       currenttime();
+      const intervalid=setInterval(()=>{
+         currenttime();
+      },1000);
+
+      setTimeout(()=> clearInterval(intervalid),5000);
+    </script>
+  </body>
+</html>

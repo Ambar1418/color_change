@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Todo-List</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: rgb(12, 4, 4);
+        margin: 0;
+      }
+      h1 {
+        font-weight: 1000;
+        color: aliceblue;
+      }
+      .container {
+        margin: 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      .btn {
+        height: 50px;
+        width: 100px;
+        background-color: rgb(238, 190, 196);
+        border: none;
+        color: rgb(176, 8, 8);
+        font-weight: bold;
+        cursor: pointer;
+      }
+      .todo-lists-ele {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+      .main_todo_div {
+        background-color: rgb(24, 4, 4);
+        color: aliceblue;
+        padding: 10px 20px;
+        border-radius: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 300px;
+      }
+      .dbtn {
+        background-color: rgb(218, 221, 19);
+        color: rgb(0, 10, 14);
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Todo List</h1>
+    <form id="todo-form">
+      <div class="container">
+        <input type="text" id="input-value" required />
+        <button class="btn" type="submit">ADD TODO</button>
+      </div>
+      <section class="todo-lists-ele"></section>
+    </form>
+
+    <script>
+      const maintodoitems = document.querySelector(".todo-lists-ele");
+      const inputvalue = document.getElementById("input-value");
+
+      const addtodolist = (e) => {
+        e.preventDefault();
+
+        console.log(inputvalue.value);
+
+        const divele = document.createElement("div");
+        divele.classList.add("main_todo_div");
+        divele.innerHTML = `
+          <li>${inputvalue.value}</li>
+          <button class="dbtn">Delete</button>
+        `;
+
+        divele.querySelector(".dbtn").addEventListener("click", () => {
+          divele.remove();
+        });
+
+        maintodoitems.appendChild(divele);
+
+        inputvalue.value = "";
+      };
+      document
+        .getElementById("todo-form")
+        .addEventListener("submit", addtodolist);
+    </script>
+  </body>
+</html>
